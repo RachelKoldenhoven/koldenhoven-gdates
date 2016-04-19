@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='gDates'>
+<head>
+    <meta charset="utf-8">
+    <title>gDates</title>
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="/styles/css/main.css">
+    <base href="/">
+</head>
+<body ng-cloak>
+<div class="container">
+            <ng-include src="'templates/nav.html'"></ng-include>
+            <br>
+            <div ng-view></div>
+</div>
+    <!-- scripts -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular-sanitize.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
+</body>
+</html>
