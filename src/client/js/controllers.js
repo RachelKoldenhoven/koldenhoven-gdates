@@ -45,7 +45,6 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
 
 app.controller('membersController', ['$scope', 'memberDataService',
   function($scope, memberDataService) {
-
     memberDataService.getMembers()
       .then(function(members) {
         console.log(members);
@@ -55,5 +54,20 @@ app.controller('membersController', ['$scope', 'memberDataService',
     $scope.filterByMe = function(param) {
       $scope.myFilterBy = param;
     }
+
+  }]);
+
+app.controller('profileController', ['$rootScope', '$scope', 'memberDataService',
+  function($rootScope, $scope, memberDataService) {
+    var member = JSON.parse($rootScope.currentUser);
+    var memberId = member._id;
+    console.log(memberId);
+
+    memberDataService.getMember(memberId)
+      .then(function(member) {
+        console.log(member);
+        $scope.member = member.data.data;
+      });
+
 
   }]);

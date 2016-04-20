@@ -10,6 +10,12 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
           return members;
         });
     },
+    getMember: function(memberId) {
+      return crudService.getOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + memberId)
+        .then(function(member) {
+          return member;
+        });
+    },
     addStudent: function(payload) {
       crudService.addOne('students', payload)
         .then(function(student) {

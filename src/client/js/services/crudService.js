@@ -14,6 +14,15 @@ app.service('crudService', ['$http', function($http) {
           return err;
         });
     },
+    getOne: function(resource) {
+      return $http.get(resource)
+        .then(function(res) {
+          return res;
+        })
+        .catch(function(err) {
+          return err;
+        })
+    },
     addOne: function(resource, payload) {
       return $http.post('/'+resource, payload)
         .then(function(res){

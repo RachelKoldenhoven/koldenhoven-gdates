@@ -19,7 +19,7 @@ app.service('authService', ['$http', '$window', function($http, $window) {
       $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
       $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
     },
-    getUserInfo: function(userData) {
+    getUserInfo: function() {
       return $window.localStorage.getItem('user');
     }
   };
