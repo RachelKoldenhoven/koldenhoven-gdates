@@ -16,7 +16,7 @@
     $routeProvider
       .when('/', {
         templateUrl: 'templates/home.html',
-        restricted: true,
+        restricted: false,
         preventLoggedIn: false
       })
       .when('/register', {
@@ -76,7 +76,7 @@
       if(next.restricted && !$window.localStorage.getItem('token')) {
         $location.path('/login');
       }
-      // if token and prevent logging in is true
+      // if token and prevent loggedin is true
       if(next.preventLoggedIn && $window.localStorage.getItem('token')) {
         $location.path('/');
       }

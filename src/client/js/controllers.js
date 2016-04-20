@@ -16,7 +16,25 @@ app.controller('registerController', ['$scope', '$location', 'authService',
       authService.register($scope.user)
         .then(function(user) {
           authService.setUserInfo(user);
-          $location.path('/');
+          $location.path('/members');
+        })
+        .catch(function(err) {
+          // check status code, send appropriate message
+          console.log(err);
+        });
+    };
+  }]);
+
+
+app.controller('loginController', ['$rootScope', '$scope', '$location', 'authService',
+  function($rootScope, $scope, $location, authService) {
+    $scope.user = {};
+    $scope.login = function() {
+      authService.login($scope.user)
+        .then(function(user) {
+          authService.setUserInfo(user);
+          $location.path('/members');
+          $rootScope.currentUser = authService.getUserInfo();
         })
         .catch(function(err) {
           // check status code, send appropriate message

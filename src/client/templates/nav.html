@@ -3,7 +3,7 @@
         <li><a href="#/">gDates</a></li>
         <li ng-show="!currentUser"><a href="/#register">Login/Register</a></li>
         <li ng-show="currentUser"><a href="#/logout">Logout</a></li>
-        <li><a href="#/">Search</a></li>
-        <li><a href="#/">My Profile</a></li>
+        <li ng-show="currentUser"><a href="#/search">Search</a></li>
+        <li ng-show="currentUser"><a href="#/profile">My Profile</a></li>
     </ul>
 </nav>

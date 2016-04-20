@@ -15,7 +15,7 @@ app.service('authService', ['$http', '$window', function($http, $window) {
   var user = {};
   return {
     login: function(user) {
-      return $http.post('/auth/login', user);
+      return $http.post('https://galvanize-student-apis.herokuapp.com/gdating/auth/login', user);
     },
     logout: function(user) {
       user = null;
