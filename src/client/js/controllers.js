@@ -11,6 +11,7 @@ app.controller('registerController', ['$scope', '$location', 'authService',
   function($scope, $location, authService) {
     $scope.user = {};
     $scope.register = function() {
+      $scope.user.slug = $scope.user.username;
       console.log($scope.user);
       authService.register($scope.user)
         .then(function(user) {

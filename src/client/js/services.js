@@ -22,7 +22,7 @@ app.service('authService', ['$http', '$window', function($http, $window) {
       $window.localStorage.clear();
     },
     register: function(user) {
-      return $http.post('/auth/register', user);
+      return $http.post('https://galvanize-student-apis.herokuapp.com/gdating/auth/register', user);
     },
     setUserInfo: function(userData) {
       $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
@@ -30,7 +30,7 @@ app.service('authService', ['$http', '$window', function($http, $window) {
     },
     getUserInfo: function(userData) {
       return $window.localStorage.getItem('user');
-    },
+    }
   };
 }]);
 
