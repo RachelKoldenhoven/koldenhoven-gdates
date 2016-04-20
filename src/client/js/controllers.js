@@ -42,3 +42,14 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
         });
     };
   }]);
+
+app.controller('membersController', ['$scope', 'memberDataService',
+  function($scope, memberDataService) {
+
+    memberDataService.getMembers()
+      .then(function(members) {
+        console.log(members);
+        $scope.members = members.data.data;
+      });
+
+  }]);

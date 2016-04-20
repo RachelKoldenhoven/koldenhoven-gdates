@@ -2,15 +2,6 @@
  * Created by rachelkoldenhoven on 4/19/16.
  */
 
-/**
-
- 1. login
- 2. logout
- 3. register
- 4. set user info into localstorage
- 5. get user info from localstorage
-
- **/
 app.service('authService', ['$http', '$window', function($http, $window) {
   var user = {};
   return {
@@ -34,17 +25,17 @@ app.service('authService', ['$http', '$window', function($http, $window) {
   };
 }]);
 
-app.service('authInterceptor', ['$window', function($window) {
-  return {
-    request: function(config) {
-      // check for token in headers
-      // config.headers['X-requested-with'] = XMLHttpRequest;
-      var token = $window.localStorage.getItem('token');
-      if(token) {
-        config.headers.Authorization = "Bearer " + token;
-        // return $q.resolve(config);
-      }
-      return config;
-    }
-  };
-}]);
+//app.service('authInterceptor', ['$window', function($window) {
+//  return {
+//    request: function(config) {
+//      // check for token in headers
+//      // config.headers['X-requested-with'] = XMLHttpRequest;
+//      var token = $window.localStorage.getItem('token');
+//      if(token) {
+//        //config.headers.Authorization = "Bearer " + token;
+//        // return $q.resolve(config);
+//      }
+//      return config;
+//    }
+//  };
+//}]);

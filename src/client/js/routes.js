@@ -67,7 +67,7 @@
         preventLoggedIn: false
       })
       .otherwise({redirectTo: '/login'});
-    $httpProvider.interceptors.push('authInterceptor');
+    //$httpProvider.interceptors.push('authInterceptor');
   }
 
   function routeChange($rootScope, $location, $window, authService) {
