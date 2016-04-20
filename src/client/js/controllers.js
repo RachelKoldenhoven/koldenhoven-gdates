@@ -52,4 +52,8 @@ app.controller('membersController', ['$scope', 'memberDataService',
         $scope.members = members.data.data;
       });
 
+    $scope.filterByMe = function(param) {
+      $scope.myFilterBy = param;
+    }
+
   }]);

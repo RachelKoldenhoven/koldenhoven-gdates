@@ -35,3 +35,7 @@
 .chatSpace {
   @include span-columns(8);
 }
+
+.profile {
+  @include  span-columns(6);
+}

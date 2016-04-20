@@ -1,13 +1,13 @@
 <div class="container">
     <aside class="memberList">
         <ul>
-            <li><a href="#">All</a> </li>
-            <li><a href="#">Popular</a> </li>
-            <li><a href="#">Near Me</a> </li>
-            <li><a href="#">My Matches</a> </li>
+            <li ng-click="filterByMe('all')">All </li>
+            <li ng-click="filterByMe('popular')">Popular </li>
+            <li ng-click="filterByMe('near')">Near Me </li>
+            <li ng-click="filterByMe('match')">My Matches</li>
             <li><a href="#">Chat</a> </li>
         </ul>
-        <div class="memberSmall" ng-repeat="member in members">
+        <div class="memberSmall" ng-repeat="member in members | filter: myFilterBy">
             <figure class="avatar">
                 <img ng-src="{{member.avatar}}">
             </figure>
@@ -16,6 +16,7 @@
                 <p>{{member.names.firstName}}</p>
                 <p>I believe: {{member.company.catchPhrase}}</p>
                 <p>I live in {{member.address.city}}</p>
+                <p>&hearts; {{member._matches.length}}</p>
             </div>
         </div>
     </aside>
