@@ -21,3 +21,17 @@
     display: inline;
   }
 }
+
+.memberList {
+  @include span-columns(4);
+  .avatar {
+    @include span-columns(1);
+  }
+  .descriptionSmall {
+    @include span-columns(3);
+  }
+}
+
+.chatSpace {
+  @include span-columns(8);
+}

@@ -17,7 +17,7 @@
       .when('/', {
         templateUrl: 'templates/home.html',
         restricted: false,
-        preventLoggedIn: false
+        preventLoggedIn: true
       })
       .when('/register', {
         templateUrl: 'templates/register.html',
@@ -78,7 +78,7 @@
       }
       // if token and prevent loggedin is true
       if(next.preventLoggedIn && $window.localStorage.getItem('token')) {
-        $location.path('/');
+        $location.path('/members');
       }
     });
   }
