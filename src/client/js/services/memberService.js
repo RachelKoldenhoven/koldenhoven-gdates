@@ -12,12 +12,25 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
     });
 
   return {
-    getMembers: function(pageNumber) {
+    getMembers: function(pageNumber, filterCriteria) {
       var start = (pageNumber -1) * 10;
       var end = start + 9;
       return gettingMembers
         .then(function() {
-          return allMembers.slice(start, end);
+          var results =  allMembers.slice();
+          if(filterCriteria === 'popular') {
+            results.sort(function(left, right) {
+              if(left._matches.length < right._matches.length) {
+                return 1;
+              } else if(left._matches.length > right._matches.length) {
+                return -1;
+              } else  {
+                return 0;
+              }
+            })
+          }
+          results = results.slice(start, end);
+          return results;
         })
     },
     getMember: function(memberId) {

@@ -46,15 +46,17 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
 app.controller('membersController', ['$scope', 'memberDataService',
   function($scope, memberDataService) {
     $scope.refreshMembers = function() {
-      if($scope.filterCriteria === 'all') {
-        memberDataService.getMembers($scope.pageNumber)
+        memberDataService.getMembers($scope.pageNumber, $scope.filterCriteria)
           .then(function(members) {
             console.log(members);
             $scope.members = members;
           });
-      }
     };
     $scope.filterByMe = function (param) {
+      if($scope.filterCriteria === param) {
+        return;
+      }
+      $scope.pageNumber = 1;
       $scope.filterCriteria = param;
       $scope.refreshMembers();
 
