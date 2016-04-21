@@ -12,7 +12,6 @@ app.controller('registerController', ['$scope', '$location', 'authService',
     $scope.user = {};
     $scope.register = function() {
       $scope.user.slug = $scope.user.username;
-      console.log($scope.user);
       authService.register($scope.user)
         .then(function(user) {
           authService.setUserInfo(user);
@@ -77,7 +76,7 @@ app.controller('membersController', ['$scope', 'memberDataService',
 
 app.controller('profileController', ['$rootScope', '$scope', '$location', '$stateParams', 'memberDataService',
   function($rootScope, $scope, $location, $stateParams, memberDataService) {
-    var member = JSON.parse($rootScope.currentUser);
+    //var member = JSON.parse($rootScope.currentUser);
     var memberId = $stateParams.id;
     memberDataService.getMember(memberId)
       .then(function(member) {
