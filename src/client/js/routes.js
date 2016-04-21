@@ -56,7 +56,7 @@
       .state('members.selected', {
         url: '/:id',
         templateUrl: 'templates/singleMember.html',
-        controller: 'profileController',
+        controller: 'membersController',
         restricted: true,
         preventLoggedIn: false
       })

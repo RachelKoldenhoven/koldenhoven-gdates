@@ -42,8 +42,8 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
     };
   }]);
 
-app.controller('membersController', ['$scope', 'memberDataService',
-  function($scope, memberDataService) {
+app.controller('membersController', ['$scope', '$stateParams', 'memberDataService',
+  function($scope, $stateParams, memberDataService) {
     $scope.refreshMembers = function() {
       $scope.loading = true;
       memberDataService.getMembers($scope.pageNumber, $scope.filterCriteria)
@@ -71,6 +71,14 @@ app.controller('membersController', ['$scope', 'memberDataService',
     /// initialize state
     $scope.pageNumber = 1;
     $scope.filterByMe('all');
+
+    ///get member to show in popout
+    var chosenMemberId = $stateParams.id;
+    console.log($stateParams);
+    memberDataService.getMember(chosenMemberId)
+      .then(function(member) {
+        $scope.chosenMember = member.data.data;
+      });
 
   }]);
 
