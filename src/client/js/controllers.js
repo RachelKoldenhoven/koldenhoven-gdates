@@ -46,10 +46,11 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
 app.controller('membersController', ['$scope', 'memberDataService',
   function($scope, memberDataService) {
     $scope.refreshMembers = function() {
-        memberDataService.getMembers($scope.pageNumber, $scope.filterCriteria)
+      $scope.loading = true;
+      memberDataService.getMembers($scope.pageNumber, $scope.filterCriteria)
           .then(function(members) {
-            console.log(members);
             $scope.members = members;
+            $scope.loading = false;
           });
     };
     $scope.filterByMe = function (param) {
@@ -84,10 +85,8 @@ app.controller('profileController', ['$rootScope', '$scope', '$location', 'membe
       });
 
     $scope.update = function() {
-      console.log($scope.member);
       memberDataService.editMember($scope.member)
         .then(function (member) {
-          console.log(member);
           $scope.member = member.data.data;
         });
     };

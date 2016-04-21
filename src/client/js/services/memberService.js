@@ -5,7 +5,6 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
   var allMembers = [];
   var gettingMembers = crudService.getAll('https://galvanize-student-apis.herokuapp.com/gdating/members?limit=10000')
     .then(function(members) {
-      console.log(members);
       members.data.data.forEach(function(member) {
         allMembers.push(member);
       });

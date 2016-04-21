@@ -7,6 +7,10 @@
             <li ng-click="filterByMe('match')">My Matches</li>
             <li><a href="#">Chat</a> </li>
         </ul>
+        <div class="loading-spinner-holder" data-loading ng-show="loading" >
+            <div class="loading-spinner"><img src="http://www.platcomventures.com/images/loader_big.gif" />
+            </div>
+        </div>
         <div class="memberSmall" ng-repeat="member in members">
             <figure class="avatar">
                 <img ng-src="{{member.avatar}}">
