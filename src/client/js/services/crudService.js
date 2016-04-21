@@ -20,26 +20,28 @@ app.service('crudService', ['$http', function($http) {
           return res;
         })
         .catch(function(err) {
+          console.log(err);
           return err;
         })
     },
     editOne: function(resource, payload) {
-      console.log('crudservice', resource, payload);
       return $http.put(resource, payload)
         .then(function(res){
-          console.log(res);
           return res;
         })
         .catch(function(err){
+          console.log(err);
           return err;
         });
     },
     removeOne: function(resource) {
       return $http.delete(resource)
         .then(function(res){
+          console.log('crudServicedelete: ', res);
           return res;
         })
         .catch(function(err){
+          console.log(err);
           return err;
         });
     }

@@ -94,7 +94,7 @@ app.controller('profileController', ['$rootScope', '$scope', '$location', '$stat
 
     $scope.delete = function() {
       memberDataService.deleteMember($scope.member);
-      $location.path('/');
+      $location.path('/logout');
     }
 
   }]);
