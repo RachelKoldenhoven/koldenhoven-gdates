@@ -31,6 +31,7 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
     $scope.login = function() {
       authService.login($scope.user)
         .then(function(user) {
+          console.log('loginctrl: ', user);
           authService.setUserInfo(user);
           $location.path('/members');
           $rootScope.currentUser = authService.getUserInfo();
@@ -76,8 +77,9 @@ app.controller('membersController', ['$scope', 'memberDataService',
 
 app.controller('profileController', ['$rootScope', '$scope', '$location', '$stateParams', 'memberDataService',
   function($rootScope, $scope, $location, $stateParams, memberDataService) {
-    //var member = JSON.parse($rootScope.currentUser);
-    var memberId = $stateParams.id;
+    console.log('stateparams: ', $stateParams);
+    var member = JSON.parse($rootScope.currentUser);
+    var memberId = member._id;
     memberDataService.getMember(memberId)
       .then(function(member) {
         $scope.member = member.data.data;
@@ -85,7 +87,7 @@ app.controller('profileController', ['$rootScope', '$scope', '$location', '$stat
 
     $scope.update = function() {
       memberDataService.editMember($scope.member)
-        .then(function (member) {
+        .then(function(member) {
           $scope.member = member.data.data;
         });
     };

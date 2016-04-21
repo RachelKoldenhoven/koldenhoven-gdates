@@ -41,6 +41,7 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
     editMember: function(member) {
       crudService.editOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + member._id, member)
         .then(function(member) {
+          console.log('crudservice res:', member);
           return member;
         });
     },

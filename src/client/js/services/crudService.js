@@ -24,8 +24,10 @@ app.service('crudService', ['$http', function($http) {
         })
     },
     editOne: function(resource, payload) {
+      console.log('crudservice', resource, payload);
       return $http.put(resource, payload)
         .then(function(res){
+          console.log(res);
           return res;
         })
         .catch(function(err){
