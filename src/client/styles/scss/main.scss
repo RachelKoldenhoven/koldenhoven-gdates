@@ -1,8 +1,10 @@
+// node-sass --include-path '/Users/rachelkoldenhoven/galvanize/koldenhoven-gdates/node_modules/bourbon/app/assets/stylesheets' --include-path '/Users/rachelkoldenhoven/galvanize/koldenhoven-gdates/node_modules/bourbon-neat/app/assets/stylesheets' -wr src/client/styles/scss/ -o src/client/styles/css/
+
 @import "bourbon";
 @import "neat";
 @import "bitters/base";
-@import "typography";
-@import 'expander';
+//@import "typography";
+//@import 'expander';
 
 .container   {
   @include outer-container;

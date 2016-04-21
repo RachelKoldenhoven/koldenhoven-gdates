@@ -26,6 +26,8 @@ var source = require('vinyl-source-stream');
 var bourbonPaths = require('bourbon').includePaths;
 var neatPaths = require('bourbon-neat').includePaths;
 
+console.log(bourbonPaths, neatPaths);
+
 /**
  * Config
  */
@@ -34,27 +36,30 @@ var neatPaths = require('bourbon-neat').includePaths;
    css: './src/client/styles/**/*.css',
    scss: ['./src/client/styles/scss/*.scss',
           './src/client/styles/scss/**/*.scss'],
-   scripts: './src/client/js/*.js',
-   server: './src/server/bin/www',
-   distServer: './dist/server/bin/www',
+   scripts: './src/client/js/*.js'
  };
-
-var nodemonConfig = {
-  script: paths.server,
-  ext: 'html js css',
-  ignore: ['node_modules']
-};
-
-var nodemonDistConfig = {
-  script: paths.distServer,
-  ext: 'html js css',
-  ignore: ['node_modules']
-};
 
 
 /**
  * Gulp Tasks
  */
+
+
+gulp.task('connect', function () {
+  connect.server({
+    root: './src/client',
+    port: 8080,
+    livereload: true
+  });
+});
+
+gulp.task('connectDist', function () {
+  connect.server({
+    root: './src/client',
+    port: 9999,
+    livereload: true
+  });
+});
 
 gulp.task('babel', function () {
 	return gulp.src('./src/client/js/bundle.js')
@@ -75,30 +80,6 @@ gulp.task('lint', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('browser-sync', ['nodemon'], function(done) {
-  browserSync({
-    proxy: "localhost:3000",  // local node app address
-    port: 5000,  // use *different* port than above
-    notify: true
-  }, done);
-});
-
-gulp.task('nodemon', function (cb) {
-  var called = false;
-  return nodemon(nodemonConfig)
-  .on('start', function () {
-    if (!called) {
-      called = true;
-      cb();
-    }
-  })
-  .on('restart', function () {
-    setTimeout(function () {
-      reload({ stream: false });
-    }, 1000);
-  });
 });
 
 gulp.task('watch', function() {
@@ -129,31 +110,18 @@ gulp.task('minify-css', function() {
     .pipe(gulp.dest('./dist/client/css/'));
 });
 
-gulp.task('copy-server-files', function () {
-  gulp.src('./src/server/**/*')
-    .pipe(gulp.dest('./dist/server/'));
+gulp.task('copy-html-files', function () {
+   gulp.src('./src/client/*.html')
+     .pipe(gulp.dest('./dist/'))
 });
-
-
-gulp.task('connectDist', function (cb) {
-  var called = false;
-  return nodemon(nodemonDistConfig)
-  .on('start', function () {
-    if (!called) {
-      called = true;
-      cb();
-    }
-  })
-  .on('restart', function () {
-    setTimeout(function () {
-      reload({ stream: false });
-    }, 1000);
-  });
-});
-
 
 // *** default task *** //
-gulp.task('default', ['browser-sync', 'watch'], function(){});
+gulp.task('default', function () {
+  runSequence(
+    ['sass'],
+    ['sass:watch', 'connect']
+  )
+});
 
 // *** build task *** //
 gulp.task('build', function() {
@@ -163,5 +131,8 @@ gulp.task('build', function() {
     'browserify',
     'babel',
     'minify-css',
-    'copy-server-files');
+    'sass',
+    'copy-html-files',
+    'connectDist'
+  );
 });

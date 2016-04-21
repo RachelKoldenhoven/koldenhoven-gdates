@@ -37,7 +37,6 @@ app.service('crudService', ['$http', function($http) {
     removeOne: function(resource) {
       return $http.delete(resource)
         .then(function(res){
-          console.log('crudServicedelete: ', res);
           return res;
         })
         .catch(function(err){
