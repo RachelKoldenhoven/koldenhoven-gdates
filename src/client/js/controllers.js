@@ -75,10 +75,10 @@ app.controller('membersController', ['$scope', 'memberDataService',
 
   }]);
 
-app.controller('profileController', ['$rootScope', '$scope', '$location', 'memberDataService',
-  function($rootScope, $scope, $location, memberDataService) {
+app.controller('profileController', ['$rootScope', '$scope', '$location', '$stateParams', 'memberDataService',
+  function($rootScope, $scope, $location, $stateParams, memberDataService) {
     var member = JSON.parse($rootScope.currentUser);
-    var memberId = member._id;
+    var memberId = $stateParams.id;
     memberDataService.getMember(memberId)
       .then(function(member) {
         $scope.member = member.data.data;

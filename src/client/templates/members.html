@@ -12,6 +12,7 @@
             </div>
         </div>
         <div class="memberSmall" ng-repeat="member in members">
+            <a ui-sref="members.selected({id: member._id})">
             <figure class="avatar">
                 <img ng-src="{{member.avatar}}">
             </figure>
@@ -22,6 +23,7 @@
                 <p>I live in {{member.address.city}}</p>
                 <p>&hearts; {{member._matches.length}}</p>
             </div>
+            </a>
         </div>
         <ul>
             <li ng-click="changePage(-1)">Previous</li>
@@ -30,6 +32,8 @@
         </ul>
     </aside>
     <main class="chatSpace">
+        <div ui-view>
 
+        </div>
     </main>
 </div>

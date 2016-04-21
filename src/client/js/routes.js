@@ -9,29 +9,33 @@
     .config(appConfig)
     .run(routeChange);
 
-  appConfig.$inject = ['$routeProvider', '$httpProvider'];
+  appConfig.$inject = ['$stateProvider', '$httpProvider', '$urlRouterProvider'];
   routeChange.$inject = ['$rootScope', '$location', '$window', 'authService'];
 
-  function appConfig($routeProvider, $httpProvider) {
-    $routeProvider
-      .when('/', {
+  function appConfig($stateProvider, $httpProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/',
         templateUrl: 'templates/home.html',
         restricted: false,
         preventLoggedIn: true
       })
-      .when('/register', {
+      .state('register', {
+        url: '/register',
         templateUrl: 'templates/register.html',
         controller: 'registerController',
         restricted: false,
         preventLoggedIn: true
       })
-      .when('/login', {
+      .state('login', {
+        url: '/login',
         templateUrl: 'templates/login.html',
         controller: 'loginController',
         restricted: false,
         preventLoggedIn: true
       })
-      .when('/logout', {
+      .state('logout', {
+        url: '/logout',
         restricted: false,
         preventLoggedIn: false,
         resolve: {
@@ -42,31 +46,42 @@
           }
         }
       })
-      .when('/members', {
+      .state('members', {
+        url: '/members',
         templateUrl: 'templates/members.html',
         controller: 'membersController',
         restricted: true,
         preventLoggedIn: false
       })
-      .when('/profile', {
+      .state('members.selected', {
+        url: '/:id',
+        templateUrl: 'templates/singleMember.html',
+        controller: 'profileController',
+        restricted: true,
+        preventLoggedIn: false
+      })
+      .state('profile', {
+        url: '/profile',
         templateUrl: 'templates/profile.html',
         controller: 'profileController',
         restricted: true,
         preventLoggedIn: false
       })
-      .when('/search', {
+      .state('search', {
+        url: '/search',
         templateUrl: 'templates/search.html',
         controller: 'searchController',
         restricted: true,
         preventLoggedIn: false
       })
-      .when('/singleMember', {
+      .state('singleMember', {
+        url: '/singleMember',
         templateUrl: 'templates/singleMember.html',
         controller: 'singleMemberController',
         restricted: true,
         preventLoggedIn: false
-      })
-      .otherwise({redirectTo: '/login'});
+      });
+      $urlRouterProvider.otherwise('/login');
     //$httpProvider.interceptors.push('authInterceptor');
   }
 
