@@ -45,14 +45,30 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
 
 app.controller('membersController', ['$scope', 'memberDataService',
   function($scope, memberDataService) {
-    memberDataService.getMembers()
-      .then(function(members) {
-        $scope.members = members.data.data;
-      });
+    $scope.refreshMembers = function() {
+      if($scope.filterCriteria === 'all') {
+        memberDataService.getMembers($scope.pageNumber)
+          .then(function(members) {
+            console.log(members);
+            $scope.members = members;
+          });
+      }
+    };
+    $scope.filterByMe = function (param) {
+      $scope.filterCriteria = param;
+      $scope.refreshMembers();
 
-    $scope.filterByMe = function(param) {
-      $scope.myFilterBy = param;
-    }
+    };
+    $scope.changePage = function(number) {
+      if($scope.pageNumber === 1 && number <0) {
+        return;
+      }
+      $scope.pageNumber += number;
+      $scope.refreshMembers();
+    };
+    /// initialize state
+    $scope.pageNumber = 1;
+    $scope.filterByMe('all');
 
   }]);
 
