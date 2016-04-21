@@ -16,22 +16,16 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
           return member;
         });
     },
-    addStudent: function(payload) {
-      crudService.addOne('students', payload)
-        .then(function(student) {
-          return student;
+    editMember: function(member) {
+      crudService.editOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + member._id, member)
+        .then(function(member) {
+          return member;
         });
     },
-    editStudent: function(student) {
-      crudService.editOne('students', student)
-        .then(function(student) {
-          return student;
-        });
-    },
-    removeStudent: function(studentID) {
-      crudService.removeOne('students', studentID)
-        .then(function(student) {
-          return student;
+    removeMember: function(memberId) {
+      crudService.removeOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + memberId)
+        .then(function(member) {
+          return member;
         });
     }
   };

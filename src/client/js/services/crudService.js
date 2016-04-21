@@ -23,17 +23,8 @@ app.service('crudService', ['$http', function($http) {
           return err;
         })
     },
-    addOne: function(resource, payload) {
-      return $http.post('/'+resource, payload)
-        .then(function(res){
-          return res;
-        })
-        .catch(function(err){
-          return err;
-        });
-    },
     editOne: function(resource, payload) {
-      return $http.put('/'+resource+'/'+payload._id, payload)
+      return $http.put(resource, payload)
         .then(function(res){
           return res;
         })

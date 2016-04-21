@@ -47,7 +47,6 @@ app.controller('membersController', ['$scope', 'memberDataService',
   function($scope, memberDataService) {
     memberDataService.getMembers()
       .then(function(members) {
-        console.log(members);
         $scope.members = members.data.data;
       });
 
@@ -61,13 +60,20 @@ app.controller('profileController', ['$rootScope', '$scope', 'memberDataService'
   function($rootScope, $scope, memberDataService) {
     var member = JSON.parse($rootScope.currentUser);
     var memberId = member._id;
-    console.log(memberId);
-
     memberDataService.getMember(memberId)
       .then(function(member) {
-        console.log(member);
         $scope.member = member.data.data;
       });
+
+    $scope.update = function() {
+      console.log($scope.member);
+      memberDataService.editMember($scope.member)
+        .then(function (member) {
+          console.log(member);
+          $scope.member = member.data.data;
+        });
+    }
+
 
 
   }]);

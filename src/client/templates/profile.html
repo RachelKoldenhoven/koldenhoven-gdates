@@ -40,5 +40,18 @@
 
         </div>
     </section>
-    <section class="profile"></section>
+    <section class="profile">
+        <figure class="avatar">
+            <img ng-src="{{member.avatar}}">
+        </figure>
+        <div class="descriptionSmall">
+            <h4>{{member.username}}</h4>
+            <p>{{member.names.firstName}}</p>
+            <p>{{member.names.lastName}}</p>
+
+            <p>I believe: {{member.company.catchPhrase}}</p>
+            <p>I live in {{member.address.city}}</p>
+            <p>&hearts; {{member._matches.length}}</p>
+        </div>
+    </section>
 </div>
