@@ -32,8 +32,8 @@ app.service('crudService', ['$http', function($http) {
           return err;
         });
     },
-    removeOne: function(resource, uuid) {
-      return $http.delete('/'+resource+'/'+uuid)
+    removeOne: function(resource) {
+      return $http.delete(resource)
         .then(function(res){
           return res;
         })

@@ -22,8 +22,8 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
           return member;
         });
     },
-    removeMember: function(memberId) {
-      crudService.removeOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + memberId)
+    deleteMember: function(member) {
+      crudService.removeOne('https://galvanize-student-apis.herokuapp.com/gdating/members/' + member._id)
         .then(function(member) {
           return member;
         });

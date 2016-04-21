@@ -56,8 +56,8 @@ app.controller('membersController', ['$scope', 'memberDataService',
 
   }]);
 
-app.controller('profileController', ['$rootScope', '$scope', 'memberDataService',
-  function($rootScope, $scope, memberDataService) {
+app.controller('profileController', ['$rootScope', '$scope', '$location', 'memberDataService',
+  function($rootScope, $scope, $location, memberDataService) {
     var member = JSON.parse($rootScope.currentUser);
     var memberId = member._id;
     memberDataService.getMember(memberId)
@@ -72,8 +72,11 @@ app.controller('profileController', ['$rootScope', '$scope', 'memberDataService'
           console.log(member);
           $scope.member = member.data.data;
         });
+    };
+
+    $scope.delete = function() {
+      memberDataService.deleteMember($scope.member);
+      $location.path('/');
     }
-
-
 
   }]);
