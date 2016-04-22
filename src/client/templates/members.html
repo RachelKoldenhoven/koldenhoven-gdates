@@ -1,6 +1,6 @@
 <div class="container">
     <aside class="memberList">
-        <ul>
+        <ul class="membersNav">
             <li ng-click="filterByMe('all')">All </li>
             <li ng-click="filterByMe('popular')">Popular </li>
             <li ng-click="filterByMe('near')">Near Me </li>
@@ -25,7 +25,7 @@
             </div>
             </a>
         </div>
-        <ul>
+        <ul class="pagination">
             <li ng-click="changePage(-1)">Previous</li>
             <li>{{pageNumber}}</li>
             <li ng-click="changePage(1)">Next</li>

@@ -186,6 +186,9 @@ picture {
     content: "";
     display: table; }
 
+body {
+  margin: 0; }
+
 .navbar ul {
   list-style-type: none;
   margin: 0;
@@ -195,7 +198,8 @@ picture {
   font-size: 16px; }
 
 .navbar li {
-  display: inline; }
+  display: inline;
+  padding: 10px; }
 
 .memberList {
   float: left;
@@ -204,26 +208,37 @@ picture {
   width: 31.76157%; }
   .memberList:last-child {
     margin-right: 0; }
-  .memberList .avatar {
+  .memberList .memberSmall {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 6.17215%; }
-    .memberList .avatar:last-child {
+    margin-right: 7.42297%;
+    width: 100%; }
+    .memberList .memberSmall:last-child {
       margin-right: 0; }
-  .memberList .descriptionSmall {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%; }
-    .memberList .descriptionSmall:last-child {
-      margin-right: 0; }
+    .memberList .memberSmall .avatar {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 19.43277%; }
+      .memberList .memberSmall .avatar:last-child {
+        margin-right: 0; }
+    .memberList .memberSmall .descriptionSmall {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 73.14426%; }
+      .memberList .memberSmall .descriptionSmall:last-child {
+        margin-right: 0; }
 
 .chatSpace {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%; }
+  width: 65.88078%;
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAU0lEQVQIWwXBwQGCMBBFwZcsCez+SFA4ercBCqAli7AGyw0z6X39R20vTDumB9md4k5dgnScv2GxYfHEYsXUKBKzi6TPd+RFZN+YojO1TlGjhrgBgI0HUM5wU0sAAAAASUVORK5CYII=");
+  color: snow;
+  padding: 2%; }
   .chatSpace:last-child {
     margin-right: 0; }
 
@@ -234,3 +249,26 @@ picture {
   width: 48.82117%; }
   .profile:last-child {
     margin-right: 0; }
+
+.membersNav {
+  float: left;
+  display: block;
+  margin-right: 7.42297%;
+  width: 100%; }
+  .membersNav:last-child {
+    margin-right: 0; }
+  .membersNav li {
+    display: inline; }
+
+.pagination {
+  float: left;
+  display: block;
+  margin-right: 7.42297%;
+  width: 100%; }
+  .pagination:last-child {
+    margin-right: 0; }
+
+.myElement {
+  /* Generated with http://gradient.quasi.ink */
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAU0lEQVQIWwXBwQGCMBBFwZcsCez+SFA4ercBCqAli7AGyw0z6X39R20vTDumB9md4k5dgnScv2GxYfHEYsXUKBKzi6TPd+RFZN+YojO1TlGjhrgBgI0HUM5wU0sAAAAASUVORK5CYII="); }

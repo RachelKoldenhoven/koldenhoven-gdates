@@ -1,8 +1,9 @@
-<nav class="navbar" ng-controller="navController">
+<nav class="navbar container" ng-controller="navController">
     <ul>
         <li><a href="#/">gDates</a></li>
         <li ng-show="!currentUser"><a ui-sref="register">Login/Register</a></li>
         <li ng-show="currentUser"><a ui-sref="logout">Logout</a></li>
+        <li ng-show="currentUser"><a ui-sref="members">Members</a></li>
         <li ng-show="currentUser"><a ui-sref="search">Search</a></li>
         <li ng-show="currentUser"><a ui-sref="profile">My Profile</a></li>
     </ul>

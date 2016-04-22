@@ -49,14 +49,8 @@ app.service('memberDataService', ['$rootScope', 'crudService', function($rootSco
         .then(function(member) {
           return member;
         });
-    },
-    setSelectedMember: function(memberId) {
-       var selectedMember = memberId;
-      return selectedMember;
-    },
-    getSelectedMember: function() {
-      return selectedMember;
     }
+
   };
 
 }]);
